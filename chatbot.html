@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Chatbot</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        #jira-container, #ai-bot-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Unified Chatbot</h1>
+    <button class="button" onclick="showJira()">Create a Jira Ticket</button>
+    <button class="button" onclick="showAIBot()">Talk to AI Bot</button>
+
+    <div id="jira-container">
+        <script data-jsd-embedded data-key="32f63bd0-88fa-4b70-bf3f-ab49b677cba5" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+    </div>
+
+    <div id="ai-bot-container">
+        <script>
+            window.__EESEL_CUSTOM_ERROR="Sorry, I'm unable to answer that. Try rephrasing your question or reach out to support.";
+            window.__EESEL_WELCOME_MSG="👋 Hi! How can I help you today?";
+            window.__EESEL_BOT_NAME="XStak Bot";
+            window.__EESEL_NAMESPACE="67b1b51b-d83a-4a2a-b97f-0c1c3a773eb8";
+            var e=document.createElement("script");
+            e.src="https://cdn.eesel.ai/ChatWidget.81df9f5f.js";
+            e.onload=function(){
+                ChatWidget.default({
+                    EESEL_LOGO_URL: '',
+                    EESEL_COLOR_PALETTE: { primary:'#4F46E5' },
+                    EESEL_DEFAULT_OPEN:false,
+                    EESEL_SUGGEST_QUESTION:true,
+                    EESEL_AUTOMATIC_SUGGESTED_QUESTION: true,
+                })
+            };
+            document.body.appendChild(e);
+        </script>
+    </div>
+
+    <script>
+        function showJira() {
+            document.getElementById('jira-container').style.display = 'block';
+            document.getElementById('ai-bot-container').style.display = 'none';
+        }
+
+        function showAIBot() {
+            document.getElementById('jira-container').style.display = 'none';
+            document.getElementById('ai-bot-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
